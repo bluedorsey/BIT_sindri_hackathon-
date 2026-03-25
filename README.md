@@ -13,7 +13,6 @@
   <img src="https://img.shields.io/badge/Hackatron_3.0-BIT_Sindri-blue?style=flat-square" />
   <img src="https://img.shields.io/badge/Track-Disaster_Management-red?style=flat-square" />
   <img src="https://img.shields.io/badge/Status-In_Development-orange?style=flat-square" />
-  <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" />
 </p>
 
 <p align="center">
@@ -737,12 +736,6 @@ We welcome contributions! Here's how:
 3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
 4. **Push** to the branch (`git push origin feature/amazing-feature`)
 5. **Open** a Pull Request
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 
 ---
 
