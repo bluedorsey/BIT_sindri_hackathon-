@@ -531,6 +531,12 @@ rakshak/
 ---
 ## UI
 <img width="1600" height="1256" alt="Image" src="https://github.com/user-attachments/assets/821c038f-4f22-409d-8da9-887bbd6d83a6" />
+<img width="1600" height="1256" alt="Image" src="https://github.com/user-attachments/assets/1421e339-e452-40d8-bfa7-0c3050c546ed" />
+<img width="1600" height="1256" alt="Image" src="https://github.com/user-attachments/assets/d6a92424-7b7c-4bea-ae26-51b34f6e9daa" />
+
+
+
+
 ## 🚀 Quick Start
 
 ### Prerequisites
