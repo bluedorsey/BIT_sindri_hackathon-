@@ -529,7 +529,8 @@ rakshak/
 ```
 
 ---
-
+## UI
+<img width="1600" height="1256" alt="Image" src="https://github.com/user-attachments/assets/821c038f-4f22-409d-8da9-887bbd6d83a6" />
 ## 🚀 Quick Start
 
 ### Prerequisites
