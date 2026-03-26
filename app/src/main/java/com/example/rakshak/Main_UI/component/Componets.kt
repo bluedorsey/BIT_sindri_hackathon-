@@ -58,11 +58,11 @@ Text(text = "SOS", fontWeight = FontWeight.Bold, fontSize = textsize.sp)
 }
 
 @Composable
-fun HeaderGreeting() {
+fun HeaderGreeting(userName: String = "Ashutosh") {
     Column(modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp)) {
         Text(
             buildAnnotatedString {
-                append("Ashutosh \n")
+                append("$userName \n")
                 withStyle(style = SpanStyle(color = GreenBadgeText)) {
                     append("Stay calm")
                 }

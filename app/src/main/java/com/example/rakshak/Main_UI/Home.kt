@@ -23,7 +23,7 @@ import com.example.rakshak.Main_UI.component.SOS_button
 import com.example.rakshak.ui.theme.*
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(userName: String = "Ashutosh") {
     Scaffold(
         bottomBar = { HomeBottomNavigation() },
         containerColor = DarkBackground
@@ -38,7 +38,7 @@ fun HomeScreen() {
                 Spacer(modifier = Modifier.height(24.dp))
                 TopBar()
                 Spacer(modifier = Modifier.height(48.dp))
-                HeroSection()
+                HeroSection(userName)
                 Spacer(modifier = Modifier.height(48.dp))
                 EmergencyButtonSection()
                 Spacer(modifier = Modifier.height(48.dp))
@@ -98,8 +98,8 @@ fun TopBar() {
 }
 
 @Composable
-fun HeroSection() {
-    HeaderGreeting()
+fun HeroSection(userName: String = "Ashutosh") {
+    HeaderGreeting(userName)
 }
 
 @Composable
@@ -388,8 +388,3 @@ fun HomeBottomNavigation() {
     }
 }
 
-@Preview
-@Composable
-fun HomeScreenPreview() {
-    HomeScreen()
-}

@@ -4,7 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.example.rakshak.ui.HomeScreen
+import androidx.compose.runtime.*
+import com.example.rakshak.Main_UI.HomeScreen
+import com.example.rakshak.Main_UI.OnboardingScreen
 import com.example.rakshak.ui.theme.RakshakTheme
 
 class MainActivity : ComponentActivity() {
@@ -13,7 +15,17 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             RakshakTheme {
-                HomeScreen()
+                var showOnboarding by remember { mutableStateOf(true) }
+                var userName by remember { mutableStateOf("Ashutosh") }
+
+                if (showOnboarding) {
+                    OnboardingScreen(onNameEntered = { name ->
+                        userName = name
+                        showOnboarding = false
+                    })
+                } else {
+                    HomeScreen(userName = userName)
+                }
             }
         }
     }
