@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.*
 import com.example.rakshak.Main_UI.HomeScreen
+import com.example.rakshak.Main_UI.MainScreen
 import com.example.rakshak.Main_UI.OnboardingScreen
 import com.example.rakshak.ui.theme.RakshakTheme
 
@@ -24,7 +25,7 @@ class MainActivity : ComponentActivity() {
                         showOnboarding = false
                     })
                 } else {
-                    HomeScreen(userName = userName)
+                    MainScreen(userName = userName)
                 }
             }
         }

@@ -25,7 +25,6 @@ import com.example.rakshak.ui.theme.*
 @Composable
 fun HomeScreen(userName: String = "Ashutosh") {
     Scaffold(
-        bottomBar = { HomeBottomNavigation() },
         containerColor = DarkBackground
     ) { paddingValues ->
         Column(

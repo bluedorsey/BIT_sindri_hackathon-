@@ -92,7 +92,7 @@ fun OnboardingScreen(onNameEntered: (String) -> Unit) {
                     .fillMaxWidth()
                     .height(300.dp)
                     .clip(RoundedCornerShape(12.dp))
-                    .background(color = DarkBackground), 
+                    .background(color = DarkBackground),
                 contentAlignment = Alignment.Center
             ) {
                 Image(painter = painterResource(id = R.drawable.handshake), contentDescription = "Hands", modifier = Modifier.fillMaxSize())
