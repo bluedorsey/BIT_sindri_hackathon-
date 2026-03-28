@@ -20,6 +20,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.rakshak.Main_UI.Map_component.Map_screen
 import com.example.rakshak.R
 import com.example.rakshak.ui.theme.*
 
@@ -30,161 +31,7 @@ fun StatusScreen(userName: String) {
             .fillMaxSize()
             .background(DarkBackground)
     ) {
-        // Fake Map grid background to simulate Map
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .drawBehind {
-                    val gridSize = 100f
-                    val strokeW = 1f
-                    val gridColor = Color.LightGray.copy(alpha = 0.1f)
-                    
-                    var x = 0f
-                    while(x < size.width) {
-                        drawLine(color = gridColor, start = Offset(x, 0f), end = Offset(x, size.height), strokeWidth = strokeW)
-                        x += gridSize
-                    }
-                    var y = 0f
-                    while(y < size.height) {
-                        drawLine(color = gridColor, start = Offset(0f, y), end = Offset(size.width, y), strokeWidth = strokeW)
-                        y += gridSize
-                    }
-                }
-        )
-
-        // Contents Over Map
-        Column(
-            modifier = Modifier.fillMaxSize()
-        ) {
-            // Top Bar
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(BottomNavBg)
-                    .padding(horizontal = 24.dp, vertical = 16.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Icon(painter = painterResource(id = R.drawable.ic_launcher_foreground), contentDescription = null, modifier = Modifier.size(24.dp), tint = RedButton)
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Text(
-                        text = "RAKSHAK",
-                        color = TextPrimary,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 16.sp,
-                        letterSpacing = 1.sp
-                    )
-                }
-                Text(
-                    text = "Stay calm. We are connected.",
-                    color = TextSecondary,
-                    fontSize = 12.sp
-                )
-            }
-
-            // Sub Header
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(DarkBackground.copy(alpha=0.9f))
-                    .padding(horizontal = 24.dp, vertical = 12.dp)
-            ) {
-                Text(
-                    text = "LIVE CONNECTION: STABLE",
-                    color = TextMuted,
-                    fontSize = 10.sp,
-                    fontWeight = FontWeight.Bold,
-                    letterSpacing = 1.5.sp
-                )
-            }
-
-            Box(modifier = Modifier.fillMaxSize()) {
-                // Map elements
-                // Floating status card
-                Card(
-                    colors = CardDefaults.cardColors(containerColor = SurfaceIconBg),
-                    shape = RoundedCornerShape(12.dp),
-                    modifier = Modifier
-                        .padding(16.dp)
-                        .fillMaxWidth(0.7f)
-                        .align(Alignment.TopStart)
-                ) {
-                    Column(modifier = Modifier.padding(16.dp)) {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Box(modifier = Modifier
-                                .size(8.dp)
-                                .clip(CircleShape)
-                                .background(GreenBadgeText))
-                            Spacer(modifier = Modifier.width(8.dp))
-                            Text("AREA SECURED", color = TextPrimary, fontWeight = FontWeight.Bold, fontSize = 14.sp)
-                        }
-                        Spacer(modifier = Modifier.height(12.dp))
-                        Text(
-                            "3 Responders active in your 500m radius. Stay at your current coordinates.",
-                            color = TextSecondary,
-                            fontSize = 12.sp,
-                            lineHeight = 18.sp
-                        )
-                    }
-                }
-
-                // Map Side buttons
-                Column(
-                    modifier = Modifier
-                        .align(Alignment.TopEnd)
-                        .padding(16.dp)
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .size(48.dp)
-                            .clip(RoundedCornerShape(8.dp))
-                            .background(SurfaceIconBg)
-                            .clickable { },
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Icon(Icons.Default.Layers, contentDescription = null, tint = TextSecondary)
-                    }
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Box(
-                        modifier = Modifier
-                            .size(48.dp)
-                            .clip(RoundedCornerShape(8.dp))
-                            .background(SurfaceIconBg)
-                            .clickable { },
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Icon(Icons.Default.MyLocation, contentDescription = null, tint = TextSecondary)
-                    }
-                }
-
-                // Fake Markers
-                MapMarker("MEDICAL UNIT", GreenBadgeBg, GreenBadgeText, Modifier.align(Alignment.TopEnd).offset(x = (-40).dp, y = 140.dp))
-                MapMarker("HELPER • 200M", GreenBadgeBg, GreenBadgeText, Modifier.align(Alignment.Center).offset(x = (-40).dp, y = (-70).dp))
-                
-                // You marker
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier.align(Alignment.Center)
-                ) {
-                    Box(modifier = Modifier
-                        .size(16.dp)
-                        .clip(CircleShape)
-                        .background(Color.White))
-                    Spacer(modifier = Modifier.height(4.dp))
-                    Box(modifier = Modifier
-                        .background(Color.Black.copy(alpha=0.6f), RoundedCornerShape(4.dp))
-                        .padding(horizontal=8.dp, vertical=4.dp)) {
-                        Text("YOU", color = Color.White, fontSize = 10.sp, fontWeight = FontWeight.Bold)
-                    }
-                }
-                
-                MapMarker("COMMUNITY RESPONDER", GreenBadgeBg, GreenBadgeText, Modifier.align(Alignment.BottomEnd).offset(x = (-40).dp, y = (-270).dp))
-
-                // Bottom Assist Requested Sheet
-                BottomSheetAssist(Modifier.align(Alignment.BottomCenter))
-            }
-        }
+        Map_screen()
     }
 }
 
@@ -260,4 +107,168 @@ fun BottomSheetAssist(modifier: Modifier) {
             }
         }
     }
+}
+// backup
+@Composable
+fun backup(){
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(DarkBackground)
+    ) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .drawBehind {
+                val gridSize = 100f
+                val strokeW = 1f
+                val gridColor = Color.LightGray.copy(alpha = 0.1f)
+
+                var x = 0f
+                while(x < size.width) {
+                    drawLine(color = gridColor, start = Offset(x, 0f), end = Offset(x, size.height), strokeWidth = strokeW)
+                    x += gridSize
+                }
+                var y = 0f
+                while(y < size.height) {
+                    drawLine(color = gridColor, start = Offset(0f, y), end = Offset(size.width, y), strokeWidth = strokeW)
+                    y += gridSize
+                }
+            }
+    )
+
+    // Contents Over Map
+    Column(
+        modifier = Modifier.fillMaxSize()
+    ) {
+        // Top Bar
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(BottomNavBg)
+                .padding(horizontal = 24.dp, vertical = 16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(painter = painterResource(id = R.drawable.ic_launcher_foreground), contentDescription = null, modifier = Modifier.size(24.dp), tint = RedButton)
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    text = "RAKSHAK",
+                    color = TextPrimary,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 16.sp,
+                    letterSpacing = 1.sp
+                )
+            }
+            Text(
+                text = "Stay calm. We are connected.",
+                color = TextSecondary,
+                fontSize = 12.sp
+            )
+        }
+
+        // Sub Header
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(DarkBackground.copy(alpha=0.9f))
+                .padding(horizontal = 24.dp, vertical = 12.dp)
+        ) {
+            Text(
+                text = "LIVE CONNECTION: STABLE",
+                color = TextMuted,
+                fontSize = 10.sp,
+                fontWeight = FontWeight.Bold,
+                letterSpacing = 1.5.sp
+            )
+        }
+
+        Box(modifier = Modifier.fillMaxSize()) {
+            // Map elements
+            // Floating status card
+            Card(
+                colors = CardDefaults.cardColors(containerColor = SurfaceIconBg),
+                shape = RoundedCornerShape(12.dp),
+                modifier = Modifier
+                    .padding(16.dp)
+                    .fillMaxWidth(0.7f)
+                    .align(Alignment.TopStart)
+            ) {
+                Column(modifier = Modifier.padding(16.dp)) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Box(modifier = Modifier
+                            .size(8.dp)
+                            .clip(CircleShape)
+                            .background(GreenBadgeText))
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text("AREA SECURED", color = TextPrimary, fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                    }
+                    Spacer(modifier = Modifier.height(12.dp))
+                    Text(
+                        "3 Responders active in your 500m radius. Stay at your current coordinates.",
+                        color = TextSecondary,
+                        fontSize = 12.sp,
+                        lineHeight = 18.sp
+                    )
+                }
+            }
+
+            // Map Side buttons
+            Column(
+                modifier = Modifier
+                    .align(Alignment.TopEnd)
+                    .padding(16.dp)
+            ) {
+                Box(
+                    modifier = Modifier
+                        .size(48.dp)
+                        .clip(RoundedCornerShape(8.dp))
+                        .background(SurfaceIconBg)
+                        .clickable { },
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(Icons.Default.Layers, contentDescription = null, tint = TextSecondary)
+                }
+                Spacer(modifier = Modifier.height(8.dp))
+                Box(
+                    modifier = Modifier
+                        .size(48.dp)
+                        .clip(RoundedCornerShape(8.dp))
+                        .background(SurfaceIconBg)
+                        .clickable { },
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(Icons.Default.MyLocation, contentDescription = null, tint = TextSecondary)
+                }
+            }
+
+            // Fake Markers
+            MapMarker("MEDICAL UNIT", GreenBadgeBg, GreenBadgeText, Modifier.align(Alignment.TopEnd).offset(x = (-40).dp, y = 140.dp))
+            MapMarker("HELPER • 200M", GreenBadgeBg, GreenBadgeText, Modifier.align(Alignment.Center).offset(x = (-40).dp, y = (-70).dp))
+
+            // You marker
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.align(Alignment.Center)
+            ) {
+                Box(modifier = Modifier
+                    .size(16.dp)
+                    .clip(CircleShape)
+                    .background(Color.White))
+                Spacer(modifier = Modifier.height(4.dp))
+                Box(modifier = Modifier
+                    .background(Color.Black.copy(alpha=0.6f), RoundedCornerShape(4.dp))
+                    .padding(horizontal=8.dp, vertical=4.dp)) {
+                    Text("YOU", color = Color.White, fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                }
+            }
+
+            MapMarker("COMMUNITY RESPONDER", GreenBadgeBg, GreenBadgeText, Modifier.align(Alignment.BottomEnd).offset(x = (-40).dp, y = (-270).dp))
+
+            // Bottom Assist Requested Sheet
+            BottomSheetAssist(Modifier.align(Alignment.BottomCenter))
+        }
+    }
+}
 }
